@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITableViewDataSource,
+UITableViewDelegate> {
+}
+
+@property (weak, nonatomic) IBOutlet UIScrollView *containerScrolView;
+@property (weak, nonatomic) IBOutlet UIView *rootContainerView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+
 
 
 @end
