@@ -16,7 +16,29 @@
     
     for(NSDictionary* dic in scheduleArray){
         MuharramSchedule* schedule = [MuharramSchedule fromDictionary:dic];
-        [array addObject:schedule];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yy"];
+        NSDate *date = [dateFormatter dateFromString:schedule.strDate];
+        
+        // today's date
+        NSDate *currDate = [NSDate date];
+        NSDateComponents *componentsToday = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:currDate];
+        
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+        
+        // checking if Majlis is today .
+        
+        BOOL isToday = [componentsToday year] == [components year] &&
+                        [componentsToday month] == [components month] &&
+                        [componentsToday day] == [components day];
+        
+        // we are ignoring Majalis happened in the past. We will show only those are schedulled today and in the future.
+        
+        NSComparisonResult result = [currDate compare:date];
+        if( result == NSOrderedAscending || isToday){
+            [array addObject:schedule];
+        }
     }
     
     return array;
