@@ -6,7 +6,10 @@
 //  Copyright © 2018 Syed Naqvi. All rights reserved.
 //
 
+#import "Client.h"
 #import "ViewController.h"
+#import "MuharramSchedule.h"
+#import "ScheduleTableViewCell.h"
 #import "UIImage+ImageEffects.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -27,6 +30,9 @@
 @property (strong) UIImage *originalBackgroundImage;
 
 @property (strong) NSMutableDictionary* blurredImageCache;
+@property bool isRefreshInProgress; // keeps track that if refresh is in Progress. Another refresh should not kick in at the sametime.
+
+@property (strong, nonatomic) NSArray *muharramSchedule;
 
 @end
 
@@ -36,9 +42,31 @@
     [super viewDidLoad];
     
     [self configureNavBar];
+    [self setupUI];
+    [self getMuharramSchedule];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    if ([self isViewLoaded] && self.view.window){
+        /*strong ref to this*/
+        _customTitleView = nil;
+    }
+}
+
+- (void)dealloc{
+    _originalBackgroundImage = nil;
+    [_blurredImageCache removeAllObjects];
+    _blurredImageCache = nil;
+}
+
+// setupUI
+
+- (void)setupUI {
     
     _headerHeight = 180.0;
-    _subHeaderHeight = 100.0;
+    _subHeaderHeight = 75.0;
     _profileImageSize = 70;
     _profileCompressedImageSize = 44;
     _barIsCollapsed = false;
@@ -61,7 +89,11 @@
     [self.view addSubview:tableView];
     views[@"tableView"] = tableView;
     
-    UIImage* imageBackground = [UIImage imageNamed:@"shrine_imam.jpg"];
+    // register cell for TableView
+    [self.tableView registerNib:[UINib nibWithNibName:@"ScheduleTableViewCell" bundle:nil] forCellReuseIdentifier:@"ScheduleTableViewCell"];
+    
+    
+    UIImage* imageBackground = [UIImage imageNamed:@"shrine_Imam.jpg"];
     _originalBackgroundImage = imageBackground;
     
     UIImageView* headerImageView = [[UIImageView alloc] initWithImage:imageBackground];
@@ -79,7 +111,7 @@
     
     UIView* subHeaderPart = [self createSubHeaderView];// [[UIView alloc] init];
     subHeaderPart.translatesAutoresizingMaskIntoConstraints = NO; //autolayout
-    subHeaderPart.backgroundColor  = [UIColor greenColor];
+    subHeaderPart.backgroundColor  = [UIColor grayColor]; // header color
     [tableHeaderView insertSubview:subHeaderPart belowSubview:headerImageView];
     views[@"subHeaderPart"] = subHeaderPart;
     
@@ -178,38 +210,39 @@
     });
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    if ([self isViewLoaded] && self.view.window){
-        /*strong ref to this*/
-        _customTitleView = nil;
-    }
-}
-
-- (void)dealloc{
-    _originalBackgroundImage = nil;
-    [_blurredImageCache removeAllObjects];
-    _blurredImageCache = nil;
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 25;
+    return self.muharramSchedule.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [UITableViewCell new];
-    cell.textLabel.text = [NSString stringWithFormat:@"Item %i", indexPath.row+1];
+    ScheduleTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ScheduleTableViewCell" forIndexPath:indexPath];
+    
+    // This is how you change the background color. We might have better sol.
+    ///UIView *bgColorView = [[UIView alloc] init];
+    ///bgColorView.backgroundColor = [UIColor grayColor];
+    ///[cell setSelectedBackgroundView:bgColorView];
+    
+    [cell setSchedule:self.muharramSchedule[indexPath.row]];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 30;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell =
+    [self.tableView dequeueReusableCellWithIdentifier:@"ScheduleTableViewCell"];
+    
+    return cell.bounds.size.height;
 }
 
 #pragma mark - NavBar configuration
@@ -254,6 +287,7 @@
     
     [self.tableView.tableHeaderView exchangeSubviewAtIndex:1 withSubviewAtIndex:2];
 }
+
 
 #pragma mark - UIScrollView delegate
 
@@ -306,9 +340,15 @@
         [labelName setTextColor:[UIColor whiteColor]];
         [labelName setFont:[UIFont boldSystemFontOfSize:15.0f]];
         
+        // get Current date...
+        
+        NSString* englishDate = [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                               dateStyle:NSDateFormatterFullStyle
+                                                               timeStyle:NSDateFormatterNoStyle];
+        
         UILabel* currDate = [UILabel new];
         currDate.translatesAutoresizingMaskIntoConstraints = NO;
-        currDate.text = @"Today's date....";
+        currDate.text = englishDate;
         currDate.numberOfLines =1;
         
         [currDate setTextColor:[UIColor whiteColor]];
@@ -329,6 +369,26 @@
         _customTitleView  = wrapper;
     }
     return _customTitleView;
+}
+
+#pragma mark get Muharram Schedule
+
+-(void) getMuharramSchedule{
+    // get the program from the local database. If records are there then no need to make a network call.
+    
+    [[Client sharedInstance] showSpinner:YES];
+    
+    // go ahead and fetch the muharramSchedule via network call.
+    [[Client sharedInstance] getMuharramSchedule:^(NSArray *muharramSchedule, NSError *error) {
+        [[Client sharedInstance] showSpinner:NO];
+        self.isRefreshInProgress = false;
+                if (error) {
+            NSLog(@"Error getting muharramSchedule: %@", error);
+        } else {
+            self.muharramSchedule = [MuharramSchedule fromJSONArray: muharramSchedule];
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 - (UIView*) createSubHeaderView {
@@ -357,6 +417,32 @@
     [view addConstraints:constraints];
     
     format = @"H:|-100-[nameLabel]";
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:views];
+    [view addConstraints:constraints];
+    
+    // get Current date...
+    
+    NSString* englishDate = [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                           dateStyle:NSDateFormatterFullStyle
+                                                           timeStyle:NSDateFormatterNoStyle];
+    
+    UILabel* labelDate = [UILabel new];
+    labelDate.translatesAutoresizingMaskIntoConstraints = NO;
+    labelDate.text = englishDate;
+    labelDate.numberOfLines = 1;
+    [labelDate setFont:[UIFont boldSystemFontOfSize:15.0f]];
+    views[@"dateLabel"] = labelDate;
+    [view addSubview:labelDate];
+    
+    format = @"|-[dateLabel]";
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:views];
+    [view addConstraints:constraints];
+    
+    format = @"V:|-35-[dateLabel]";
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:views];
+    [view addConstraints:constraints];
+    
+    format = @"H:|-100-[dateLabel]";
     constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:views];
     [view addConstraints:constraints];
     

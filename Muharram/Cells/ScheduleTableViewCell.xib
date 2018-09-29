@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="172" id="KGk-i7-Jjw" customClass="ScheduleTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="172"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="171.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" editable="NO" text="Name" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BM-tX-SYw">
+                        <rect key="frame" x="16" y="16" width="288" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="uWU-cK-wJ5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" smartDashesType="no" textContentType="name"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Address" translatesAutoresizingMaskIntoConstraints="NO" id="Xr9-ch-GWp">
+                        <rect key="frame" x="16" y="46" width="288" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Bum-Q0-GnC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="location"/>
+                        <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Date" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8C4-cr-Yaw">
+                        <rect key="frame" x="16" y="76" width="288" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="4cy-gJ-9og"/>
+                            <constraint firstAttribute="height" constant="25" id="Eig-Oo-G9E"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Time" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgZ-YG-XO3">
+                        <rect key="frame" x="16" y="106" width="288" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="acZ-Ea-DhC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Phone" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Z6-Y5-qmL">
+                        <rect key="frame" x="16" y="136" width="288" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="dCR-sl-QP7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" textContentType="tel"/>
+                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8C4-cr-Yaw" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="2p5-x7-RJL"/>
+                    <constraint firstItem="0BM-tX-SYw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4Yc-15-snv"/>
+                    <constraint firstItem="LgZ-YG-XO3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="6Yx-qg-ZKi"/>
+                    <constraint firstItem="LgZ-YG-XO3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="HZu-bx-TSt"/>
+                    <constraint firstItem="8C4-cr-Yaw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="M2g-0g-9VH"/>
+                    <constraint firstItem="0BM-tX-SYw" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="PCh-Kj-7Aw"/>
+                    <constraint firstItem="Xr9-ch-GWp" firstAttribute="trailing" secondItem="0BM-tX-SYw" secondAttribute="trailing" id="dD5-Fb-g6S"/>
+                    <constraint firstItem="8Z6-Y5-qmL" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="dTd-6s-h23"/>
+                    <constraint firstItem="8C4-cr-Yaw" firstAttribute="top" secondItem="Xr9-ch-GWp" secondAttribute="bottom" constant="5" id="dhE-2X-UCz"/>
+                    <constraint firstItem="Xr9-ch-GWp" firstAttribute="leading" secondItem="0BM-tX-SYw" secondAttribute="leading" id="k8f-rO-g8n"/>
+                    <constraint firstItem="8Z6-Y5-qmL" firstAttribute="top" secondItem="LgZ-YG-XO3" secondAttribute="bottom" constant="5" id="mnf-Ei-iWh"/>
+                    <constraint firstItem="LgZ-YG-XO3" firstAttribute="top" secondItem="8C4-cr-Yaw" secondAttribute="bottom" constant="5" id="nJ8-bn-ERL"/>
+                    <constraint firstItem="LgZ-YG-XO3" firstAttribute="top" secondItem="8C4-cr-Yaw" secondAttribute="bottom" constant="5" id="qN5-Wh-R4c"/>
+                    <constraint firstItem="8Z6-Y5-qmL" firstAttribute="top" secondItem="LgZ-YG-XO3" secondAttribute="bottom" constant="5" id="rqe-iN-kCX"/>
+                    <constraint firstItem="8Z6-Y5-qmL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vKz-ac-3dd"/>
+                    <constraint firstItem="0BM-tX-SYw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="vMP-hW-b0v"/>
+                    <constraint firstItem="Xr9-ch-GWp" firstAttribute="top" secondItem="0BM-tX-SYw" secondAttribute="bottom" constant="5" id="yUK-oq-m1f"/>
+                </constraints>
+                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="tvAddress" destination="Xr9-ch-GWp" id="yl4-il-uMs"/>
+                <outlet property="tvDate" destination="8C4-cr-Yaw" id="rd9-4B-CEk"/>
+                <outlet property="tvName" destination="0BM-tX-SYw" id="ejB-Gn-ZS0"/>
+                <outlet property="tvPhone" destination="8Z6-Y5-qmL" id="nrQ-hY-ccW"/>
+                <outlet property="tvTime" destination="LgZ-YG-XO3" id="sqR-rk-ICC"/>
+            </connections>
+            <point key="canvasLocation" x="50" y="111"/>
+        </tableViewCell>
+    </objects>
+</document>
