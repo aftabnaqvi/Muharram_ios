@@ -29,10 +29,7 @@
     schedule.strDate      = dictionary[@"Date"];
     schedule.strTime     = dictionary[@"Time"];
     schedule.strAddress  = dictionary[@"Address"];
-    schedule.strPhone    = dictionary[@"Phone"];
-
-    [schedule display];
-    
+    schedule.strPhone    = dictionary[@"Phone"];    
     return schedule;
 }
 

@@ -54,7 +54,6 @@ static NSString *BASE_URL = @"https://script.google.com/macros/s/AKfycbxOLElujQc
 	
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:BASE_URL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
         NSDictionary *response = responseObject;
         
         completion([response valueForKey:@"Sheet1"] , nil);

@@ -32,11 +32,14 @@
 }
 
 -(void) setSchedule:(MuharramSchedule *)schedule{
-    [schedule display];
+
+    //NSString* englishDate = [NSDateFormatter localizedStringFromDate:[NSDate date]
+    //                                                       dateStyle:NSDateFormatterFullStyle
+    //                                                       timeStyle:NSDateFormatterNoStyle];
     
     [self.tvName setText:schedule.strName];
     [self.tvAddress setText:schedule.strAddress];
-    [self.tvDate setText:schedule.strDate];
+    [self.tvDate setText:[[schedule.strDate stringByAppendingString:@" - "] stringByAppendingString:schedule.strDay]];
     [self.tvTime setText:schedule.strTime];
     [self.tvPhone setText:schedule.strPhone];
 }
