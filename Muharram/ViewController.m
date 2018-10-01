@@ -111,7 +111,7 @@
     
     UIView* subHeaderPart = [self createSubHeaderView];// [[UIView alloc] init];
     subHeaderPart.translatesAutoresizingMaskIntoConstraints = NO; //autolayout
-    subHeaderPart.backgroundColor  = [UIColor grayColor]; // header color
+    subHeaderPart.backgroundColor  = [UIColor brownColor]; // header color
     [tableHeaderView insertSubview:subHeaderPart belowSubview:headerImageView];
     views[@"subHeaderPart"] = subHeaderPart;
     
@@ -252,7 +252,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     self.view.backgroundColor = [UIColor blueColor];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:nil];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshClicked)];
     
     [self switchToExpandedHeader];
 }
@@ -307,7 +308,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [self.navigationController.navigationBar setTitleVerticalPositionAdjustment:delta forBarMetrics:UIBarMetricsDefault];
         
         self.imageHeaderView.image = [self blurWithImageAt:((60-delta)/60.0)];
-        
     }
     
     if(!_barAnimationComplete && yPos > _headerSwitchOffset + 20 + 40) {
@@ -371,18 +371,28 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     return _customTitleView;
 }
 
+#pragma refresh button handling
+
+-(void)refreshClicked{
+    [self getMuharramSchedule];
+}
+
 #pragma mark get Muharram Schedule
 
 -(void) getMuharramSchedule{
     // get the program from the local database. If records are there then no need to make a network call.
     
+    if(self.isRefreshInProgress)
+        return;
+    
+    self.isRefreshInProgress = true;
     [[Client sharedInstance] showSpinner:YES];
     
     // go ahead and fetch the muharramSchedule via network call.
     [[Client sharedInstance] getMuharramSchedule:^(NSArray *muharramSchedule, NSError *error) {
         [[Client sharedInstance] showSpinner:NO];
         self.isRefreshInProgress = false;
-                if (error) {
+        if (error) {
             NSLog(@"Error getting muharramSchedule: %@", error);
         } else {
             self.muharramSchedule = [MuharramSchedule fromJSONArray: muharramSchedule];

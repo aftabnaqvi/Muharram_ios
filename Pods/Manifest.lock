@@ -14,25 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - CSStickyHeaderFlowLayout (0.2.11)
   - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
-  - CSStickyHeaderFlowLayout (= 0.2.11)
   - SVProgressHUD (= 2.2.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - CSStickyHeaderFlowLayout
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  CSStickyHeaderFlowLayout: e9bcb1762413f49d7d09e5bd0ae5efd1100116b7
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: 0e9e289278adf2dacc2decd5e6a63b960cfe7738
+PODFILE CHECKSUM: 572920be0f44b73d14c7277119f5d380cdd14372
 
 COCOAPODS: 1.5.3
