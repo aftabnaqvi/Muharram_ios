@@ -6,6 +6,9 @@
 //  Copyright © 2018 Syed Naqvi. All rights reserved.
 //
 
+
+//https://stackoverflow.com/questions/30426501/prevent-deploying-disable-watchkit-app-with-ios-iphone-app-in-xcode
+
 #import "AppDelegate.h"
 #import "ViewController.h"
 

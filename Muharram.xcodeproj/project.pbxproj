@@ -15,7 +15,6 @@
 		E8107BB12161EF490004CE3C /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8107BB02161EF490004CE3C /* ExtensionDelegate.m */; };
 		E8107BB42161EF490004CE3C /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8107BB32161EF490004CE3C /* NotificationController.m */; };
 		E8107BB62161EF490004CE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8107BB52161EF490004CE3C /* Assets.xcassets */; };
-		E8107BBB2161EF490004CE3C /* watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E8107B9B2161EF450004CE3C /* watch.app */; };
 		E8107BC52163EB7E0004CE3C /* aam-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8107BC42163EB7E0004CE3C /* aam-logo.jpg */; };
 		E8107BC72163EB980004CE3C /* aam-banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8107BC62163EB980004CE3C /* aam-banner.jpg */; };
 		E8E9C932215C7D4000216EA7 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E9C930215C7D4000216EA7 /* UIImage+ImageEffects.m */; };
@@ -46,13 +45,6 @@
 			remoteGlobalIDString = E8107BA62161EF480004CE3C;
 			remoteInfo = "watch Extension";
 		};
-		E8107BB92161EF490004CE3C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA0BC1D3215AC79100B111EE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E8107B9A2161EF450004CE3C;
-			remoteInfo = watch;
-		};
 		FA0BC1F4215AC79100B111EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA0BC1D3215AC79100B111EE /* Project object */;
@@ -79,17 +71,6 @@
 				E8107BA82161EF480004CE3C /* watch Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E8107BC32161EF490004CE3C /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				E8107BBB2161EF490004CE3C /* watch.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -384,12 +365,10 @@
 				FA0BC1D8215AC79100B111EE /* Frameworks */,
 				FA0BC1D9215AC79100B111EE /* Resources */,
 				A67754C0F0E5FA36B627E574 /* [CP] Copy Pods Resources */,
-				E8107BC32161EF490004CE3C /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E8107BBA2161EF490004CE3C /* PBXTargetDependency */,
 			);
 			name = Muharram;
 			productName = Muharram;
@@ -626,11 +605,6 @@
 			isa = PBXTargetDependency;
 			target = E8107BA62161EF480004CE3C /* watch Extension */;
 			targetProxy = E8107BA92161EF480004CE3C /* PBXContainerItemProxy */;
-		};
-		E8107BBA2161EF490004CE3C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E8107B9A2161EF450004CE3C /* watch */;
-			targetProxy = E8107BB92161EF490004CE3C /* PBXContainerItemProxy */;
 		};
 		FA0BC1F5215AC79100B111EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
