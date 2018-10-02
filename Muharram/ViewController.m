@@ -92,6 +92,14 @@
     // register cell for TableView
     [self.tableView registerNib:[UINib nibWithNibName:@"ScheduleTableViewCell" bundle:nil] forCellReuseIdentifier:@"ScheduleTableViewCell"];
     
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    
+    self.tableView.estimatedRowHeight = 100;//the estimatedRowHeight but if is more this autoincremented with autolayout
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self.tableView setNeedsLayout];
+    [self.tableView layoutIfNeeded];
+    self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0) ;
     
     UIImage* imageBackground = [UIImage imageNamed:@"shrine_Imam.jpg"];
     _originalBackgroundImage = imageBackground;
@@ -226,7 +234,16 @@
     ///bgColorView.backgroundColor = [UIColor grayColor];
     ///[cell setSelectedBackgroundView:bgColorView];
     
-    [cell setSchedule:self.muharramSchedule[indexPath.row]];
+    MuharramSchedule *schedule = self.muharramSchedule[indexPath.row];
+    [cell setSchedule:schedule];
+    
+    // checking and addind details for Mubasher bhai's Majlis details...
+    if([schedule.strMasayab containsString:@"Shabber Ali Khan"]){
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        // set the button's target to this table view controller so we can interpret touch events and map that to a NSIndexSet
+        [button addTarget:self action:@selector(accessoryTapped:event:) forControlEvents:UIControlEventTouchUpInside];
+        cell.accessoryView = button;
+    }
     
     return cell;
 }
@@ -235,14 +252,25 @@
     return 30;
 }
 
-
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell =
     [self.tableView dequeueReusableCellWithIdentifier:@"ScheduleTableViewCell"];
     
     return cell.bounds.size.height;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    // Show details for Mubasher bhai's house Majlis details...
+}
+
+- (void)accessoryTapped:(id)sender event:(id)event{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint: currentTouchPosition];
+    if (indexPath != nil){
+        [self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
+    }
 }
 
 #pragma mark - NavBar configuration

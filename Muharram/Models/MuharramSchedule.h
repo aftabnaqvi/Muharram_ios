@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *strDay;
 @property (nonatomic, strong) NSString *strDate;
 @property (nonatomic, strong) NSString *strPhone;
+@property (nonatomic, strong) NSString *strMasayab;
 
 //-(id)initWithDictionary:(NSDictionary * )dictionary;
 

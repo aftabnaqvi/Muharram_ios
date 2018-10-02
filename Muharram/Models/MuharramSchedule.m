@@ -24,7 +24,6 @@
         // today's date
         NSDate *currDate = [NSDate date];
         NSDateComponents *componentsToday = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:currDate];
-        
         NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
         
         // checking if Majlis is today .
@@ -51,7 +50,9 @@
     schedule.strDate      = dictionary[@"Date"];
     schedule.strTime     = dictionary[@"Time"];
     schedule.strAddress  = dictionary[@"Address"];
-    schedule.strPhone    = dictionary[@"Phone"];    
+    schedule.strPhone    = dictionary[@"Phone"];
+    schedule.strMasayab  = dictionary[@"Masayab"];
+    
     return schedule;
 }
 

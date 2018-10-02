@@ -46,6 +46,10 @@
     [self.tvDate setText:strDate];
     [self.tvTime setText:schedule.strTime];
     [self.tvPhone setText:schedule.strPhone];
+    
+    //if([schedule.strMasayab containsString:@"Shabber Ali Khan"]){
+    //    [self.tvTime setText:[[schedule.strTime stringByAppendingString:@"\n"] stringByAppendingString:schedule.strMasayab]];
+    //}
 }
 
 -(NSString*) getFirstWordFromString:(NSString*)text{
