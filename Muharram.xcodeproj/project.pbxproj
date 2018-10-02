@@ -16,9 +16,9 @@
 		E8107BB42161EF490004CE3C /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8107BB32161EF490004CE3C /* NotificationController.m */; };
 		E8107BB62161EF490004CE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8107BB52161EF490004CE3C /* Assets.xcassets */; };
 		E8107BBB2161EF490004CE3C /* watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E8107B9B2161EF450004CE3C /* watch.app */; };
+		E8107BC52163EB7E0004CE3C /* aam-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8107BC42163EB7E0004CE3C /* aam-logo.jpg */; };
+		E8107BC72163EB980004CE3C /* aam-banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8107BC62163EB980004CE3C /* aam-banner.jpg */; };
 		E8E9C932215C7D4000216EA7 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E9C930215C7D4000216EA7 /* UIImage+ImageEffects.m */; };
-		E8E9C93A215C8AF900216EA7 /* shrine_Imam.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8E9C939215C8AF900216EA7 /* shrine_Imam.jpg */; };
-		E8E9C93C215C8F5100216EA7 /* Labbaik-ya-Hussain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8E9C93B215C8F5100216EA7 /* Labbaik-ya-Hussain.jpg */; };
 		E8E9C947215F040500216EA7 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = E8E9C941215F040400216EA7 /* time.png */; };
 		E8E9C948215F040500216EA7 /* name.png in Resources */ = {isa = PBXBuildFile; fileRef = E8E9C942215F040400216EA7 /* name.png */; };
 		E8E9C949215F040500216EA7 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = E8E9C943215F040400216EA7 /* location.png */; };
@@ -112,10 +112,10 @@
 		E8107BB52161EF490004CE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8107BB72161EF490004CE3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8107BB82161EF490004CE3C /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E8107BC42163EB7E0004CE3C /* aam-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aam-logo.jpg"; sourceTree = "<group>"; };
+		E8107BC62163EB980004CE3C /* aam-banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aam-banner.jpg"; sourceTree = "<group>"; };
 		E8E9C930215C7D4000216EA7 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		E8E9C931215C7D4000216EA7 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		E8E9C939215C8AF900216EA7 /* shrine_Imam.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shrine_Imam.jpg; sourceTree = "<group>"; };
-		E8E9C93B215C8F5100216EA7 /* Labbaik-ya-Hussain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Labbaik-ya-Hussain.jpg"; sourceTree = "<group>"; };
 		E8E9C941215F040400216EA7 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = time.png; path = "../../../../../Downloads/Muharram_ios-master/Muharram/Images/time.png"; sourceTree = "<group>"; };
 		E8E9C942215F040400216EA7 /* name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = name.png; path = "../../../../../Downloads/Muharram_ios-master/Muharram/Images/name.png"; sourceTree = "<group>"; };
 		E8E9C943215F040400216EA7 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location.png; path = "../../../../../Downloads/Muharram_ios-master/Muharram/Images/location.png"; sourceTree = "<group>"; };
@@ -298,14 +298,14 @@
 		FA563CF0215EA51800DC6CF6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E8107BC62163EB980004CE3C /* aam-banner.jpg */,
+				E8107BC42163EB7E0004CE3C /* aam-logo.jpg */,
 				E8E9C946215F040400216EA7 /* day.jpeg */,
 				E8E9C943215F040400216EA7 /* location.png */,
 				E8E9C944215F040400216EA7 /* name-color.png */,
 				E8E9C942215F040400216EA7 /* name.png */,
 				E8E9C945215F040400216EA7 /* phone.png */,
 				E8E9C941215F040400216EA7 /* time.png */,
-				E8E9C93B215C8F5100216EA7 /* Labbaik-ya-Hussain.jpg */,
-				E8E9C939215C8AF900216EA7 /* shrine_Imam.jpg */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -511,13 +511,13 @@
 			files = (
 				E8E9C949215F040500216EA7 /* location.png in Resources */,
 				FA563CFB215EE29600DC6CF6 /* ScheduleTableViewCell.xib in Resources */,
+				E8107BC52163EB7E0004CE3C /* aam-logo.jpg in Resources */,
 				E8E9C94B215F040500216EA7 /* phone.png in Resources */,
-				E8E9C93A215C8AF900216EA7 /* shrine_Imam.jpg in Resources */,
 				E8E9C947215F040500216EA7 /* time.png in Resources */,
-				E8E9C93C215C8F5100216EA7 /* Labbaik-ya-Hussain.jpg in Resources */,
 				E8E9C94C215F040500216EA7 /* day.jpeg in Resources */,
 				FA0BC1EB215AC79100B111EE /* LaunchScreen.storyboard in Resources */,
 				E8E9C94A215F040500216EA7 /* name-color.png in Resources */,
+				E8107BC72163EB980004CE3C /* aam-banner.jpg in Resources */,
 				FA0BC1E8215AC79100B111EE /* Assets.xcassets in Resources */,
 				E8E9C948215F040500216EA7 /* name.png in Resources */,
 			);

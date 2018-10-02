@@ -101,7 +101,7 @@
     [self.tableView layoutIfNeeded];
     self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0) ;
     
-    UIImage* imageBackground = [UIImage imageNamed:@"shrine_Imam.jpg"];
+    UIImage* imageBackground = [UIImage imageNamed:@"aam-banner.jpg"];
     _originalBackgroundImage = imageBackground;
     
     UIImageView* headerImageView = [[UIImageView alloc] initWithImage:imageBackground];
@@ -119,7 +119,7 @@
     
     UIView* subHeaderPart = [self createSubHeaderView];// [[UIView alloc] init];
     subHeaderPart.translatesAutoresizingMaskIntoConstraints = NO; //autolayout
-    subHeaderPart.backgroundColor  = [UIColor brownColor]; // header color
+    subHeaderPart.backgroundColor  = [UIColor blackColor]; // header color
     [tableHeaderView insertSubview:subHeaderPart belowSubview:headerImageView];
     views[@"subHeaderPart"] = subHeaderPart;
     
@@ -234,6 +234,7 @@
     ///bgColorView.backgroundColor = [UIColor grayColor];
     ///[cell setSelectedBackgroundView:bgColorView];
     
+    cell.accessoryType = UITableViewCellAccessoryNone;
     MuharramSchedule *schedule = self.muharramSchedule[indexPath.row];
     [cell setSchedule:schedule];
     
@@ -348,7 +349,7 @@
 #pragma mark - privates
 
 - (UIImageView*) createAvatarImage {
-    UIImageView* avatarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Labbaik-ya-Hussain.jpg"]];
+    UIImageView* avatarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"aam-logo.jpg"]];
     avatarView.contentMode = UIViewContentModeScaleToFill;
     avatarView.layer.cornerRadius = 8.0;
     avatarView.layer.borderWidth = 3.0f;
@@ -363,7 +364,7 @@
         UILabel* labelName = [UILabel new];
         labelName.translatesAutoresizingMaskIntoConstraints = NO;
         labelName.text = @"Anjuman-e-Ansarul Mehdi (A.S)";
-        labelName.numberOfLines =1;
+        labelName.numberOfLines = 1;
         
         [labelName setTextColor:[UIColor whiteColor]];
         [labelName setFont:[UIFont boldSystemFontOfSize:15.0f]];
@@ -439,6 +440,7 @@
     labelName.translatesAutoresizingMaskIntoConstraints = NO;
     labelName.text = @"Anjuman-e-Ansarul Mehdi (A.S)";
     labelName.numberOfLines = 1;
+    [labelName setTextColor:[UIColor whiteColor]];
     [labelName setFont:[UIFont boldSystemFontOfSize:18.0f]];
     views[@"nameLabel"] = labelName;
     [view addSubview:labelName];
@@ -468,6 +470,7 @@
     labelDate.translatesAutoresizingMaskIntoConstraints = NO;
     labelDate.text = englishDate;
     labelDate.numberOfLines = 1;
+    [labelDate setTextColor:[UIColor whiteColor]];
     [labelDate setFont:[UIFont boldSystemFontOfSize:15.0f]];
     views[@"dateLabel"] = labelDate;
     [view addSubview:labelDate];
